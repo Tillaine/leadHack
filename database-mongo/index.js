@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost:27017/jobs', {useNewUrlParser: true});
 
 const db = mongoose.connection;
 
@@ -22,33 +22,36 @@ const leadSchema = mongoose.Schema({
   rating: Number,
   company: String,
   contact: String,
+  position: String,
+  dueDate: Date
 
 });
 
 const lead = mongoose.model('lead', leadSchema);
 
 const addOne = (job) => {
-  const newJob = job;
-  return new Promise(resolve, reject) => {
+  const newJob = new Lead(job);
+  return new Promise((resolve, reject) => {
     newJob.save((err) => {
       if (err) {reject(err)}
       else { resolve (console.log('added', job))}
     })
-  }
+  })
 }
 
 const addMany = (jobsArr) => {
-  return nwe Promise(resolve, reject) => {
+  return new Promise((resolve, reject) => {
     lead.insertMany(jobsArr, (err) => {
-      if (err) {reject (err)}
-      else {resolve (console.log(`added ${jobsArr.length} jobs`))}
+      if (err) {reject(console.log('mongo err', err))}
+      else {resolve(console.log(`added ${jobsArr.length} jobs`))}
     });
 
-  }
+  })
+
 }
 
 const selectAll = function() {
-  new Promise(resolve, reject) {
+  new Promise((resolve, reject) => {
     lead.find({}, function(err, leads) {
       if (err) {
         reject(err);
@@ -57,11 +60,11 @@ const selectAll = function() {
       }
     });
 
-  }
+  })
 };
 
 const getById = function(jobId) {
-  new Promise(resolve, reject) {
+  new Promise((resolve, reject) => {
     lead.find({jobId}, function(err, leads) {
       if (err) {
         reject(err);
@@ -70,20 +73,22 @@ const getById = function(jobId) {
       }
     });
 
-  }
+  })
 };
 
 const update = function(jobId, update) {
-  new Promise(resolve, reject) {
-    resolve(lead.findOneAndUpdate({jobId}, update, {new: true}});
+  new Promise((resolve, reject) => {
+    resolve(lead.findOneAndUpdate({jobId}, update, {new: true}));
+  })
 };
 
-const delete = function(jobId, update) {
-  new Promise(resolve, reject) {
+const deleteOne = (jobId, update) => {
+  new Promise((resolve, reject) => {
     lead.deleteOne({jobId}, (err) => {
       if (err) { reject(err)}
       else{ resolve (console.log(`job#:${jobId} was deleted`))}
     });
+  })
 };
 
 
@@ -91,4 +96,4 @@ const delete = function(jobId, update) {
 
 
 
-module.exports.selectAll = {selectAll, getById, update};
+module.exports = {selectAll, getById, update, addOne, addMany, deleteOne};
