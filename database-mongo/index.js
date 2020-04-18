@@ -11,21 +11,62 @@ db.once('open', function() {
   console.log('mongoose connected successfully');
 });
 
-var itemSchema = mongoose.Schema({
-  quantity: Number,
-  description: String
+var leadSchema = mongoose.Schema({
+  jobId: Number,
+  notes: String,
+  phone: String,
+  email: String,
+  website: String,
+  currentStep: String,
+  nextStep: String,
+  rating: Number,
+  company: String,
+  contact: String,
+
 });
 
-var Item = mongoose.model('Item', itemSchema);
+var lead = mongoose.model('lead', leadSchema);
 
-var selectAll = function(callback) {
-  Item.find({}, function(err, items) {
-    if(err) {
-      callback(err, null);
-    } else {
-      callback(null, items);
-    }
-  });
+var selectAll = function() {
+  new Promise(resolve, reject) {
+    lead.find({}, function(err, leads) {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(leads);
+      }
+    });
+
+  }
 };
 
-module.exports.selectAll = selectAll;
+var getById = function(jobId) {
+  new Promise(resolve, reject) {
+    lead.find({jobId}, function(err, leads) {
+      if(err) {
+        reject(err);
+      } else {
+        resolve(leads);
+      }
+    });
+
+  }
+};
+
+var update = function(jobId, update) {
+  new Promise(resolve, reject) {
+    resolve(lead.findOneAndUpdate({jobId}, update, {new: true}});
+};
+
+var delete = function(jobId, update) {
+  new Promise(resolve, reject) {
+    lead.deleteOne({jobId}, (err) => {
+      if(err) { reject(err)}
+      else{ resolve (console.log(`job#:${jobId} was deleted`))}
+    });
+};
+
+
+
+
+module.exports.selectAll = {selectAll, getById, update};
