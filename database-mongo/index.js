@@ -49,7 +49,6 @@ const addMany = (jobsArr) => {
   })
 
 }
-
 const selectAll = function() {
   new Promise((resolve, reject) => {
     lead.find({}, function(err, leads) {

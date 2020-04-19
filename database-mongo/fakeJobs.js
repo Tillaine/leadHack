@@ -14,6 +14,7 @@ let fakeJob = () => {
   rating: Math.floor(Math.random() * 6) + 2,
   company: faker.company.companyName(),
   contact: faker.name.findName(),
+  dueDate: 2020-06-09
   }
 return job;
 
