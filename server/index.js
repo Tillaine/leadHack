@@ -1,23 +1,23 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-// UNCOMMENT THE DATABASE YOU'D LIKE TO USE
-// var items = require('../database-mysql');
-// var items = require('../database-mongo');
+const express = require('express');
+const bodyParser = require('body-parser');
+const morgan = require('morgan')
+const routes = require('./router.js')
+const cors = require('cors');
 
-var app = express();
+
+const app = express();
+
+// *********************************
+// Middleware
+// *********************************
+app.use(morgan('dev'));
+app.use(express.json())
+
+
 
 app.use(express.static('./client/dist'));
 
-
-app.get('/items', function (req, res) {
-  items.selectAll(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
-});
+app.use('/api/leads', routes);
 
 app.listen(3000, function() {
   console.log('listening on port 3000!');

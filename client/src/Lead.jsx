@@ -1,27 +1,26 @@
 import React from 'react';
 
-const Lead = (props) => {
-  console.log(props.leads)
 
-  return (
-    <div className='Lead'>
-      {props.leads.forEach(lead => {
-        const { currentStep, nextStep, rating, company } = props.lead
-        return (
-          <div>
-            <ul>
-              <li id={companyName}>{company}</li>
-              <li id={currentStep}>{currentStep}</li>
-              <li id={nextStep}>Next Step {nextStep}</li>
-              <li id={nextStep}>✰ {rating}</li>
-            </ul>
-          </div>
-        )
-        })
-      }
-    </div>
+class Lead extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clicked: false
+    }
+  }
 
-  )
+
+render() {
+  const { company, currentStep, nextStep, rating, jobId } = this.props.lead;
+    return (
+    <li className='lead' id={`id:${jobId}`}>
+        <div id={"companyName"}>{company}</div>
+        <div className='leadText' id={"currentStep"}>✔︎ Current Step: <em>{currentStep}</em></div>
+        <div className='leadText' id={"nextStep"}>❑ Next Step: <em>{nextStep}</em>}</div>
+        <div className='leadText' id={"rating"}> ✰ {rating}</div>
+    </li>)
+
+  }
 
 
 }

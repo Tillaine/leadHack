@@ -1,0 +1,56 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: lavenderblush;
+  color: cornflowerblue;
+}
+
+.appContainer {
+  display: flex;
+  margin: auto;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+#formContainer{
+  display: flex;
+  flex: 70%;
+  width:50%;
+
+}
+
+#pipeline {
+  flex: 50%;
+}
+
+.lead {
+  border-bottom: .5px groove #3A99A4;
+  border-radius: 2px 2px 20px 0px;
+  width: 80%;
+  align-content: center;
+}
+
+.leadText {
+  color: darkcyan;
+
+}
+#companyName {
+  font-weight: 700;
+
+}
+
+ul {
+  padding-left: 30%;
+
+}
+
+li {
+  list-style-type: none;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
