@@ -30,7 +30,12 @@ body {
 }
 
 .leadText {
-  color: coral;
+  color: darkcyan;
+
+}
+#companyName {
+  font-weight: 700;
+
 }
 
 ul {

@@ -16,22 +16,40 @@ class Form extends React.Component {
       dueDate: ''
     }
 
+    this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.clearForm = this.clearForm.bind(this)
   }
 
   handleChange (e) {
-    console.log(e.target);
     const { name, value } = e.target
     this.setState({
         [name]: value
     })
     e.preventDefault();
-    console.log('state', this.state)
 }
 
-  handleSubmit(e) {
-    this.props.handleSubmit(this.state)
+handleSubmit(e) {
+    const newLead = this.state;
+    this.props.handleSubmit(newLead)
+    this.clearForm();
+    e.preventDefault();
   }
+
+clearForm() {
+  this.setState({
+    company: '',
+    position: '',
+    website: '',
+    notes: '',
+    contact: '',
+    phone: '',
+    email: '',
+    currentStep: 'Write Cover Letter',
+    rating: 1,
+    dueDate: ''
+  })
+}
 
 render() {
 
@@ -63,7 +81,7 @@ render() {
         </label>
         <label> Current Step
           <select onChange={this.handleChange} name="currentStep" value={this.state.currentStep} >
-                <option value="Send Cover Letter">Send Cover Letter</option>
+                <option value="Write Cover Letter">Write Cover Letter</option>
                 <option value="Send Application">Send Application</option>
                 <option value="Follow Up">Follow Up</option>
                 <option value="Phone Interview">Phone Interview</option>
@@ -81,7 +99,7 @@ render() {
             </select>
         </label>
         <label> Date to complete step
-          <input onChange={this.handleChange} name="dueDate" value={this.state.dueDate}/>
+          <input onChange={this.handleChange} name="dueDate" placeholder="yyyy-mm-dd" value={this.state.dueDate}/>
         </label>
         <button>Add Lead</button>
     </form>

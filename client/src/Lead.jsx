@@ -11,14 +11,12 @@ class Lead extends React.Component {
 
 
 render() {
-
-  console.log('lead', this.props.lead)
-  const { company, currentStep, nextStep, rating } = this.props.lead;
+  const { company, currentStep, nextStep, rating, jobId } = this.props.lead;
     return (
-    <li className='lead'>
+    <li className='lead' id={`id:${jobId}`}>
         <div id={"companyName"}>{company}</div>
-        <div className='leadText' id={"currentStep"}>{currentStep}</div>
-        <div className='leadText' id={"nextStep"}>Next Step {nextStep}</div>
+        <div className='leadText' id={"currentStep"}>✔︎ Current Step: <em>{currentStep}</em></div>
+        <div className='leadText' id={"nextStep"}>❑ Next Step: <em>{nextStep}</em>}</div>
         <div className='leadText' id={"rating"}> ✰ {rating}</div>
     </li>)
 

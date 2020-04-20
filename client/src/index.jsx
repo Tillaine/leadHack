@@ -15,12 +15,21 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-
+    fetch('http://localhost:3000/api/leads')
+      .then(addResponse => {
+          return addResponse.json()
+      })
+      .then(leads => {
+          console.log('formated response', leads)
+          this.setState({leads})
+      })
+      .catch(err => console.log('error while getting leads', err))
   }
 
-  handleSubmit (newLead) {
-      e.preventDefault();
 
+  handleSubmit (newLead) {
+    console.log('handle submit new lead', newLead)
+    return 'test'
       const options = {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -32,7 +41,7 @@ class App extends React.Component {
           return addResponse.json()
       })
       .then(formatedResponse => {
-          console.log(formatedResponse)
+          console.log('formated response', formatedResponse)
       })
       .catch(err => console.log('error while adding move', err))
   }

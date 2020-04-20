@@ -49,8 +49,8 @@ const addMany = (jobsArr) => {
   })
 
 }
-const selectAll = function() {
-  new Promise((resolve, reject) => {
+const allLeads = function() {
+  return new Promise((resolve, reject) => {
     lead.find({}, function(err, leads) {
       if (err) {
         reject(err);
@@ -95,4 +95,4 @@ const deleteOne = (jobId, update) => {
 
 
 
-module.exports = {selectAll, getById, update, addOne, addMany, deleteOne};
+module.exports = {allLeads, getById, update, addOne, addMany, deleteOne};
