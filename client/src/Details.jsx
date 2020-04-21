@@ -28,7 +28,7 @@ handleSubmit(e) {
 
       let updates = {};
       updates[this.state.updateField] = this.state.updateValue;
-      updates._id = `ObjectId("${this.props.lead._id}")`
+      updates._id = `${this.props.lead._id}`
       console.log(updates)
       this.props.handleSubmit(updates)
       this.clearpopForm();

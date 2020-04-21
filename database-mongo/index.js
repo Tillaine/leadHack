@@ -89,9 +89,15 @@ const getById = function(jobId) {
   })
 };
 
-const update = function(jobId, update) {
-  new Promise((resolve, reject) => {
-    resolve(lead.findOneAndUpdate({jobId}, update, {new: true}));
+const update = function(id, update) {
+  return new Promise((resolve, reject) => {
+    lead.findByIdAndUpdate({_id: id._id}, update, {new:true}, (err, lead) => {
+      if (err) {reject(err)}
+      else {
+        resolve(lead)
+        console.log("updated")
+      }
+    });
   })
 };
 
