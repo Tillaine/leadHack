@@ -30,11 +30,11 @@ const leadSchema = mongoose.Schema({
 const lead = mongoose.model('lead', leadSchema);
 
 const addOne = (job) => {
-  const newJob = new Lead(job);
+  const newJob = new lead(job);
   return new Promise((resolve, reject) => {
-    newJob.save((err) => {
+    newJob.save((err, lead) => {
       if (err) {reject(err)}
-      else { resolve (console.log('added', job))}
+      else { resolve (console.log('added', lead))}
     })
   })
 }

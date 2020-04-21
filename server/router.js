@@ -4,7 +4,7 @@ const controller = require('../controller/controller.js');
 
 router.get('/', controller.getLeads);
 
-// router.post('/', controller.postLead);
+router.post('/', controller.addLead);
 
 // router.put('/', controller.updateLead);
 

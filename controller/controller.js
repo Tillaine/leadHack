@@ -9,11 +9,22 @@ const getLeads = (req, res) => {
     })
   })
   .then(leads => {
-    console.log('leads from controller', leads)
     res.send(leads)
   })
   .catch(err => console.log('db err', err))
 }
 
-module.exports = { getLeads }
+const addLead = (req, res) => {
+  console.log(req.body)
+  mongo.addOne(req.body)
+  .then(dbRes => {
+    console.log('dbRes from controller', dbRes)
+  })
+  .then(dbRes => {
+    getLeads(req, res)
+  })
+  .catch(err => console.log('db err', err))
+}
+
+module.exports = { getLeads, addLead }
 

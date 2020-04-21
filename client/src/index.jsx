@@ -26,22 +26,19 @@ class App extends React.Component {
       .catch(err => console.log('error while getting leads', err))
   }
 
-
   handleSubmit (newLead) {
-    console.log('handle submit new lead', newLead)
-    return 'test'
-      const options = {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: `${JSON.stringify(newLead)}`
-      }
+    const options = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: `${JSON.stringify(newLead)}`
+    }
 
-      fetch('http://localhost:3000/api/leads', options)
-      .then(addResponse => {
-          return addResponse.json()
-      })
-      .then(formatedResponse => {
-          console.log('formated response', formatedResponse)
+    fetch('http://localhost:3000/api/leads', options)
+    .then(addResponse => {
+      return addResponse.json()
+    })
+    .then(leads => {
+      this.setState({leads})
       })
       .catch(err => console.log('error while adding move', err))
   }

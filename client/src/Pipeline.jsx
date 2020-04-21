@@ -7,7 +7,7 @@ const Pipeline = (props) => {
     <div >
       <ul>
       {props.leads.map(lead => {
-        return <Lead lead={lead} key={lead.jobId}/>
+        return <Lead lead={lead} key={lead._id}/>
         })
       }
       </ul>

@@ -53,7 +53,6 @@ clearForm() {
 
 render() {
 
-  console.log('Form', this.props.handleSubmit)
   return (
   <div>
     <h2>New Lead</h2>
