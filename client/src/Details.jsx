@@ -13,6 +13,7 @@ class Detail extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.clearpopForm = this.clearpopForm.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleChange (e) {
@@ -38,6 +39,11 @@ handleSubmit(e) {
 
   }
 
+  handleDelete(e) {
+    this.props.delete(this.props.lead._id)
+    this.props.toggle()
+  }
+
   clearpopForm() {
     this.setState({
       clicked: false,
@@ -53,7 +59,7 @@ render() {
 
 
     return (
-      <div className="details">
+      <div className="box">
         <div className="details_content">
           <span className="close" onClick={this.props.toggle}>
             &times;
@@ -85,10 +91,11 @@ render() {
                 </label>
                 <label> Update
                   <input onChange={this.handleChange} name="updateValue" placeholder="what's changed?" value={this.state.dueDate}/>
-                </label>
+                </label><br></br>
                 <button onClick={this.handleSubmit} className='closeButton'> ✎ Update Lead</button>
-          </form>
+          </form> <br></br>
               <button onClick={this.props.toggle} className='closeButton'> ✖︎ close</button>
+              <button onClick={this.handleDelete} className='deleteButton'> ♼ delete</button>
                 </div>
             </div>
         </div>

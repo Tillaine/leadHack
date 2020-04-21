@@ -54,7 +54,7 @@ clearpopForm() {
 render() {
 
   return (
-  <div>
+  <div className='box'>
     <h2>New Lead</h2>
       <form onSubmit={this.handleSubmit}>
         <label> Company
@@ -100,9 +100,9 @@ render() {
         <label> Date to complete step
           <input onChange={this.handleChange} name="dueDate" placeholder="yyyy-mm-dd" value={this.state.dueDate}/>
         </label>
-        <button>Add Lead</button>
+        <button className='closeButton'>Add Lead</button><br></br>
+    </form><br></br>
         <button onClick={this.props.toggle} className='closeButton'> ✖︎ close</button>
-    </form>
   </div>
 )
 

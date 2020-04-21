@@ -101,9 +101,9 @@ const update = function(id, update) {
   })
 };
 
-const deleteOne = (jobId, update) => {
-  new Promise((resolve, reject) => {
-    lead.deleteOne({jobId}, (err) => {
+const deleteOne = (jobId) => {
+ return new Promise((resolve, reject) => {
+    lead.deleteOne({_id: jobId}, (err) => {
       if (err) { reject(err)}
       else{ resolve (console.log(`job#:${jobId} was deleted`))}
     });

@@ -10,7 +10,7 @@ router.post('/', controller.addLead);
 
 router.put('/', controller.updateLead);
 
-// router.delete('/', controller.deleteLead);
+router.delete('/', controller.deleteLead);
 
 module.exports = router;
 

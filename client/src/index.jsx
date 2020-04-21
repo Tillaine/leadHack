@@ -17,21 +17,15 @@ class App extends React.Component {
       details: tempData[0]
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.getLeads = this.getLeads.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
     this.toggleForm = this.toggleForm.bind(this)
     this.toggleDetails = this.toggleDetails.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   componentDidMount() {
-    fetch('http://localhost:3000/api/leads')
-      .then(addResponse => {
-          return addResponse.json()
-      })
-      .then(leads => {
-          console.log('formated response', leads)
-          this.setState({leads})
-      })
-      .catch(err => console.log('error while getting leads', err))
+    this.getLeads()
   }
 
   toggleForm() {
@@ -69,6 +63,33 @@ class App extends React.Component {
       this.setState({leads})
       })
       .catch(err => console.log('error while adding move', err))
+      this.getLeads()
+  }
+
+  handleDelete(id) {
+    const options = {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+    }
+
+    fetch(`http://localhost:3000/api/leads?id=${id}`, options)
+    .then(addResponse => {
+      return addResponse.json()
+    })
+      .catch(err => console.log('error while adding move', err))
+      this.getLeads()
+}
+
+  getLeads() {
+    fetch('http://localhost:3000/api/leads')
+      .then(addResponse => {
+          return addResponse.json()
+      })
+      .then(leads => {
+          console.log('formated response', leads)
+          this.setState({leads})
+      })
+      .catch(err => console.log('error while getting leads', err))
   }
 
   handleSubmit (newLead) {
@@ -86,6 +107,7 @@ class App extends React.Component {
       this.setState({leads})
       })
       .catch(err => console.log('error while adding move', err))
+      this.getLeads()
   }
 
   render () {
@@ -95,7 +117,11 @@ class App extends React.Component {
           <h1>Leads</h1>
             <button onClick={this.toggleForm} >New Lead</button>
             {this.state.formOn ? < PopForm handleSubmit={this.handleSubmit} toggle={this.toggleForm} /> : null}
-            {this.state.detailsOn ? < Details handleSubmit={this.handleUpdate} lead={this.state.details} toggle={this.toggleDetails} /> : null}
+            {this.state.detailsOn ? < Details
+            handleSubmit={this.handleUpdate}
+            lead={this.state.details}
+            toggle={this.toggleDetails}
+            delete={this.handleDelete}/> : null}
           <div className='appContainer'>
             <div id='pipeline'>
               <Pipeline toggle={this.toggleDetails} leads={this.state.leads}/>
