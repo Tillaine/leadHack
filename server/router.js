@@ -4,6 +4,8 @@ const controller = require('../controller/controller.js');
 
 router.get('/', controller.getLeads);
 
+router.get('/details', controller.getLeads);
+
 router.post('/', controller.addLead);
 
 // router.put('/', controller.updateLead);

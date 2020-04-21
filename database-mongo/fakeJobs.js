@@ -8,7 +8,7 @@ let fakeJob = () => {
   phone: '555-555-5555',
   email: 'Jean.peopleTeam@google.com',
   website: 'https://careers.google.com/teams/people/',
-  Position: 'Full-Stack Web Developer',
+  position: 'Full-Stack Web Developer',
   currentStep: 'Create Cover Letter',
   nextStep: "Send in Application",
   rating: Math.floor(Math.random() * 6) + 2,
@@ -42,5 +42,5 @@ return jobs;
 }
 
 
-  createJobs(20)
+  createJobs(5)
 

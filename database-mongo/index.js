@@ -62,6 +62,20 @@ const allLeads = function() {
   })
 };
 
+const details = function() {
+  return new Promise((resolve, reject) => {
+    lead.find({}, function(err, leads) {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(leads);
+      }
+    });
+
+  })
+};
+
+
 const getById = function(jobId) {
   new Promise((resolve, reject) => {
     lead.find({jobId}, function(err, leads) {
@@ -95,4 +109,4 @@ const deleteOne = (jobId, update) => {
 
 
 
-module.exports = {allLeads, getById, update, addOne, addMany, deleteOne};
+module.exports = { details, allLeads, getById, update, addOne, addMany, deleteOne};
