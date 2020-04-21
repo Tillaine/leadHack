@@ -114,8 +114,9 @@ class App extends React.Component {
     return (
       <div>
         <div>
+          <img className='logo' src='./logo.png'/>
           <h1>Leads</h1>
-            <button onClick={this.toggleForm} >New Lead</button>
+            <button id='newLeadBtn' className='closeButton' onClick={this.toggleForm} > + New Lead</button>
             {this.state.formOn ? < PopForm handleSubmit={this.handleSubmit} toggle={this.toggleForm} /> : null}
             {this.state.detailsOn ? < Details
             handleSubmit={this.handleUpdate}
@@ -126,9 +127,6 @@ class App extends React.Component {
             <div id='pipeline'>
               <Pipeline toggle={this.toggleDetails} leads={this.state.leads}/>
             </div>
-              {/* <div id='formContainer'> */}
-              {/* <Form handleSubmit={this.handleSubmit}/> */}
-            {/* </div> */}
           </div>
         </div>
       </div>

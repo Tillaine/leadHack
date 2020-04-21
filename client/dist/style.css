@@ -4,6 +4,13 @@ body {
   color: cornflowerblue;
 }
 
+.logo{
+  display: block;
+  float:right;
+  width: 15%;
+  bottom: 10%
+}
+
 .appContainer {
   display: flex;
   margin: auto;
@@ -11,13 +18,14 @@ body {
   align-content: space-between;
 }
 
-#formContainer{
-  display: flex;
-  flex: 70%;
-  width:50%;
 
+#newLeadBtn{
+  margin-left: 70%;
 }
 
+/* ************************
+pipeline
+************************ */
 #pipeline {
   flex: 50%;
 }
@@ -53,6 +61,12 @@ h2 {
 /* ************************
 Form
 ************************ */
+#formContainer{
+  display: flex;
+  flex: 70%;
+  width:50%;
+
+}
 
 /* ************************
 Details
@@ -68,9 +82,22 @@ Details
   box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
   position: fixed;
   z-index: 1;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 90%;
   background-color: rgba(255, 255, 255, 0.90);
+}
+
+.details_content {
+  background-color: white;
+  position: absolute;
+  top: 1%;
+  left: 30%;
+  bottom: 15%;
+  width: 40%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid black;
+  font-size: .8em;
 }
 
 .closeButton {
@@ -99,6 +126,10 @@ Details
   text-align: center;
   }
 
+  .updateContainer{
+    display: flex;
+    align-content: space-between;
+  }
   .closeButton:hover {
   border: solid #337FED 1px;
   background: #1E62D0;

@@ -70,13 +70,14 @@ render() {
                 <div className='detailsInfo'>
                 <div className={currentStep}>Current Step: {currentStep}</div>
                   <div className={nextStep}>Next: {nextStep} by <em className='date'>{date}</em> </div>
-                <div className={website}>☻ <a href={website} target="_blank">{website}</a></div>
+                <div className={website}>➤ <a href={website} target="_blank">{website}</a></div>
                 <div className={contact}>☻ {contact}</div>
                 <div className={phone}>✆ {phone}</div>
                 <div className={email}>✉︎ {email}
-                </div><br></br>
+                </div>
                 <h2>Update Lead</h2>
-          <form>
+          <form className='updateContainer'>
+            <div className='updateInputs'>
                 <label> Update Field
                   <select onChange={this.handleChange} name="updateField" >
                     <option value="blank">select feild</option>
@@ -88,14 +89,17 @@ render() {
                     <option value="dueDate">Due Date</option>
                     <option value="NextStep">Next Step</option>
                   </select>
-                </label>
+                </label> <br></br>
                 <label> Update
                   <input onChange={this.handleChange} name="updateValue" placeholder="what's changed?" value={this.state.dueDate}/>
                 </label><br></br>
+            </div>
                 <button onClick={this.handleSubmit} className='closeButton'> ✎ Update Lead</button>
           </form> <br></br>
+          <div className='updateContainer'>
               <button onClick={this.props.toggle} className='closeButton'> ✖︎ close</button>
               <button onClick={this.handleDelete} className='deleteButton'> ♼ delete</button>
+          </div>
                 </div>
             </div>
         </div>
