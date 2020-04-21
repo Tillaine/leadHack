@@ -8,7 +8,7 @@ router.get('/details', controller.getLeads);
 
 router.post('/', controller.addLead);
 
-// router.put('/', controller.updateLead);
+router.put('/', controller.updateLead);
 
 // router.delete('/', controller.deleteLead);
 

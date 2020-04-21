@@ -17,6 +17,7 @@ class App extends React.Component {
       details: tempData[0]
     }
     this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleUpdate = this.handleUpdate.bind(this)
     this.toggleForm = this.toggleForm.bind(this)
     this.toggleDetails = this.toggleDetails.bind(this)
   }
@@ -53,6 +54,23 @@ class App extends React.Component {
     })
   }
 
+  handleUpdate(update) {
+    const options = {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: `${JSON.stringify(update)}`
+    }
+
+    fetch('http://localhost:3000/api/leads', options)
+    .then(addResponse => {
+      return addResponse.json()
+    })
+    .then(leads => {
+      this.setState({leads})
+      })
+      .catch(err => console.log('error while adding move', err))
+  }
+
   handleSubmit (newLead) {
     const options = {
       method: 'POST',
@@ -77,7 +95,7 @@ class App extends React.Component {
           <h1>Leads</h1>
             <button onClick={this.toggleForm} >New Lead</button>
             {this.state.formOn ? < PopForm handleSubmit={this.handleSubmit} toggle={this.toggleForm} /> : null}
-            {this.state.detailsOn ? < Details lead={this.state.details} toggle={this.toggleDetails} /> : null}
+            {this.state.detailsOn ? < Details handleSubmit={this.handleUpdate} lead={this.state.details} toggle={this.toggleDetails} /> : null}
           <div className='appContainer'>
             <div id='pipeline'>
               <Pipeline toggle={this.toggleDetails} leads={this.state.leads}/>

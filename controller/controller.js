@@ -40,5 +40,17 @@ const addLead = (req, res) => {
   .catch(err => console.log('db err', err))
 }
 
-module.exports = { getLeads, addLead }
+const deleteLead = (req, res) => {
+  console.log(req.body)
+  mongo.addOne(req.body)
+  .then(dbRes => {
+    console.log('dbRes from controller', dbRes)
+  })
+  .then(dbRes => {
+    getLeads(req, res)
+  })
+  .catch(err => console.log('db err', err))
+}
+
+module.exports = { getLeads, addLead, deleteLead }
 
