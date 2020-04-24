@@ -7,11 +7,11 @@
 ### Lead Hack is the idea app for proactive job seekers who want to stay organized when tracking dozens or even hundreds of job leads.
 
 ## Built With
-React - front-end
-Node - for backened software
-express - server
-mongoDB - database
-mongoose - connection
+- React > front-end
+- Node > for backened software
+- express >server
+- mongoDB > database
+- mongoose > connection
 
 ## Getting Started
 - Ensure that you have node installed
