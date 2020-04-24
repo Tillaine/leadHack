@@ -23,7 +23,7 @@ mongoose - connection
 ## Prerequisites
 - (node  & NPM )[https://www.npmjs.com/get-npm]
 - (mongoDB)[https://www.mongodb.com]
-- [run npm i] from repo directory and
+- [run npm i] from repo directory
 
 
 ## Summary ##
