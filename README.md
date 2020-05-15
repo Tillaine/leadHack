@@ -1,6 +1,6 @@
 # Project Name #
 
-![Imgur](https://i.imgur.com/SGETWim.mp4)
+![Imgur](https://i.imgur.com/U092bBQ.png)
 
 
 ## Lead Hack
