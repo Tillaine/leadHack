@@ -1,6 +1,6 @@
 # Project Name #
 
-[HackLead Mobile](https://imgur.com/eC8IA4G)
+[Imgur](https://i.imgur.com/eC8IA4G.png)
 
 
 ## Lead Hack
